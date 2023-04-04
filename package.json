@@ -1,5 +1,5 @@
 {
-  "name": "md-links",
+  "name": "itzaqui-md-links",
   "version": "0.1.0",
   "engines": {
     "node": ">=16.x"
@@ -9,16 +9,37 @@
     "version": "5.5.0",
     "commit": "a63a770ea33332882790401851df337734b0b734"
   },
+  "description": "Library in charge of reading and parsing files in Markdown format, to verify the links they contain and report statistics (if the links work well or if they are broken).",
+  "main": "./cli.js",
+  "directories": {
+    "test": "test"
+  },
   "scripts": {
     "eslint": "eslint --ext .js test/",
     "pretest": "npm run eslint",
     "test": "jest --verbose --coverage"
   },
+  "keywords": [
+    "http",
+    "links",
+    "markdown",
+    "NodeJs"
+  ],
+  "author": "Itza Quintero",
+  "license": "ISC",
+  "bin": {
+    "Itza-md-links": "./cli.js"
+  },
   "dependencies": {
+    "colors": "^1.4.0",
     "eslint": "^8.35.0",
     "node-fetch": "^3.3.1"
   },
   "devDependencies": {
     "jest": "^27.5.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Itzaqui/DEV003-md-links"
   }
 }

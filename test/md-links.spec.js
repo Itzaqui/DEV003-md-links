@@ -1,5 +1,11 @@
 // const mdLinks = require('../');
-const {validPath, absolutePath, turnAbsolute, directory} = require('../api')
+const {validPath, 
+    absolutePath, 
+    turnAbsolute, 
+    directory, 
+    mdFile,
+    readFile,
+    getLinks} = require('../api')
 
 describe('validPath', () => {
   it('should be a function', () => {
@@ -57,6 +63,55 @@ describe('turnAbsolute', () => {
       expect(directory(dirPath)).toBeFalsy();
   });
   });
+
+  describe('mdFile', () => {
+    it('should be a function', () => {
+        expect(typeof mdFile).toBe('function');
+    });
+    it('should return true if it is a md file ', () => {
+      const filePath = '/Users/Lenovo/Desktop/md-links/DEV003-md-links/README.md';
+      expect(mdFile(filePath)).toBeTruthy();
+  });
+  it('should return false if it is not a md file', () => {
+      const filePath = '/Users/Lenovo/Desktop/md-links/DEV003-md-links/api.js';
+      expect(mdFile(filePath)).toBeFalsy();
+  });
+  });
+
+  describe('readFile', () => {
+    it('should be a function', () => {
+      expect(typeof readFile).toBe('function');
+    });
+    it('should read a text inside a file', () => {
+      const filePath = '/Users/Lenovo/Desktop/md-links/DEV003-md-links/prueba.txt';
+      expect(readFile(filePath)).toEqual("Estoy intentando leer un archivo");
+    });
+  });
+
+  const arrayLinks = 
+    [
+      {
+        href: 'https://es.wikipedia.org/wiki/Markdown',
+        text: 'Markdown',
+        file: 'C:/Users/Lenovo/Desktop/md-links/DEV003-md-links/README.md'
+      },
+      {
+        href: 'https://nodejs.org/',
+        text: 'Node.js',
+        file: 'C:/Users/Lenovo/Desktop/md-links/DEV003-md-links/README.md'
+      },
+      {
+        href: 'https://user-images.githubusercontent.com/110297/42118443-b7a5f1f0-7bc8-11e8-96ad-9cc5593715a6.jpg',
+        text: 'md-links',
+        file: 'C:/Users/Lenovo/Desktop/md-links/DEV003-md-links/README.md'
+      } 
+  ];
+
+ 
+
+
+
+
 
 
 
