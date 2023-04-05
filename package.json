@@ -17,7 +17,8 @@
   "scripts": {
     "eslint": "eslint --ext .js test/",
     "pretest": "npm run eslint",
-    "test": "jest --verbose --coverage"
+    "test": "jest --verbose --coverage",
+    "md-links": "node ./cli.js"
   },
   "keywords": [
     "http",
@@ -28,7 +29,7 @@
   "author": "Itza Quintero",
   "license": "ISC",
   "bin": {
-    "Itza-md-links": "./cli.js"
+    "md-links": "./cli.js"
   },
   "dependencies": {
     "colors": "^1.4.0",

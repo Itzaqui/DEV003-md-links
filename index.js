@@ -22,35 +22,39 @@ function mdLinks(path, options) {
       filesArray = filesArray.filter(filePath => api.mdFile(filePath))
      } 
     if(options.validate) {
-    // filesArray.forEach((file))
-    const statusLinks = api.validateLinks(api.getLinks(absoPath))
-    statusLinks.then((obj) => {
-      if(obj.length) {
-        resolve(obj)
-      }
-      reject(new Error("There are no links in the file"))
+    let arrayPromises = []
+    filesArray.forEach((file) => {
+    const validArray = api.validateLinks(api.getLinks(file))
+    arrayPromises.push(validArray)
     })
-    }   else if(!options.validate) {
-          const links = api.getLinks(absoPath)
-          if(links.length) {
-          resolve(links)
-    }
-          reject(new Error("There are no links in the file"))
-     }
-    
+    Promise.allSettled(arrayPromises)
+    .then((promises) => {
+      let promiseArray = []
+      promises.forEach((promise) => {
+      promiseArray = promiseArray.concat(promise.value)
+      })
+      resolve(promiseArray)
+    })
+    }  else if(!options.validate) {
+          let links = []
+          filesArray.forEach((file) => {
+          links = api.getLinks(file)
+          })
+        resolve(links)
+    }    
   }).catch((err) => {
     console.log(err)
-  })
-}
+  })  
+  }
 
-mdLinks('C:/Users/Lenovo/Desktop/md-links/DEV003-md-links/README.md', { validate: true }).then((resolve) => {
-    console.log(resolve);
+
+// mdLinks('prueba', { validate: false })
+// .then((resolve) => {
+//     console.log(resolve);
   
-  })
-  
-    .catch((err) => {
-        (err)
-    });
+//   }).catch((err) => {
+//         (err)
+//     });
 
 
 

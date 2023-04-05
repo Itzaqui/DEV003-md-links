@@ -8,11 +8,10 @@ const path = process.argv[2];
 // console.log(process.argv)
 
 function cli() {
-    const validate = argv.includes("--validate") || argv.includes("--v");
-    const stats = argv.includes("--stats") || argv.includes("--s");
-    const help = argv.includes("--help") || argv.includes("--h");
+    const validate = argv.includes("--validate") || argv.includes("-v");
+    const stats = argv.includes("--stats") || argv.includes("-s");
     
-    if (path === undefined || path === "--help" || path === "--h") {
+    if (path === undefined || path === "--help" || path === "-h") {
         console.log((colors.blue("\n-------------------------------------------------------------------------------------------\n                    Welcome to Md-links")) 
         + (colors.blue("\n-------------------------------------------------------------------------------------------")));
     console.log(colors.blue("Insert your path and write:"));
