@@ -17,8 +17,7 @@ Markdown Links es una librería que extrae, analiza y valida los links que se en
 
 Este proyecto se realizó siguiendo los pasos del siguiente diagrama:
 
-![Diagrama](https://github/Itzaqui/DEV003-md-links/blob/7241b8514e1febea96058647258326f9db4641c0/images/diagrama-mdlinks.png)
-
+![Diagrama](https://raw.githubusercontent.com/Itzaqui/DEV003-md-links/main/images/diagrama-mdlinks.png)
 
 ## 3. Instalación
 
