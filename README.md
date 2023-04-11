@@ -34,7 +34,7 @@ Para tener acceso al menú principal debe escribir md-links en la terminal.
 md-links
 ```
 
-![Menú](menu.png)
+![Menú](https://raw.githubusercontent.com/Itzaqui/DEV003-md-links/main/images/menu.png)
 
 Después debe escribir en la terminal el comando junto con el directorio que desea analizar. Al pasar la opción --validate, el módulo debe hacer una petición HTTP para averiguar si el link funciona(ok) o no(fail).
 
@@ -42,7 +42,7 @@ Después debe escribir en la terminal el comando junto con el directorio que des
 md-links directorio o archivo.md --validate
 ```
 
-![Validate](validate.png)
+![Validate](https://raw.githubusercontent.com/Itzaqui/DEV003-md-links/main/images/validate.png)
 
 Si pasamos la opción --stats el output (salida) será un texto con estadísticas básicas sobre los links.
 
@@ -50,7 +50,7 @@ Si pasamos la opción --stats el output (salida) será un texto con estadística
 md-links directorio o archivo.md --stats
 ```
 
-![Stats](stats.png)
+![Stats](https://raw.githubusercontent.com/Itzaqui/DEV003-md-links/main/images/stats.png)
 
 También podemos combinar --stats y --validate para obtener estadísticas que necesiten de los resultados de la validación.
 
@@ -58,4 +58,4 @@ También podemos combinar --stats y --validate para obtener estadísticas que ne
 md-links directorio o archivo.md --stats --validate
 ```
 
-![Stats-Validate](stats-validate.png)
+![Stats-Validate](https://raw.githubusercontent.com/Itzaqui/DEV003-md-links/main/images/stats-validate.png)
