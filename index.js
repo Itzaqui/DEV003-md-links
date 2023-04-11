@@ -1,19 +1,18 @@
 const api = require("./api");
+var colors = require('colors/safe');
 
 function mdLinks(path, options) {
   return new Promise((resolve, reject) => {
     let absoPath = path;
     if(!api.validPath(path)) {
-        reject(new Error("The path is invalid"));
+        reject(new Error(colors.red("The path is invalid")));
     }
     if(!api.absolutePath(path)) {
         absoPath = api.turnAbsolute(path)
         if(api.isFile(absoPath)) {
             if(!api.mdFile(absoPath)) {
-                reject(new Error("It is not a file md"))
-            }
-     
-          }
+                reject(new Error(colors.red("It is not a file md")))
+            }    }
     }
     let filesArray = []
     filesArray.push(absoPath)
@@ -41,14 +40,16 @@ function mdLinks(path, options) {
           links = api.getLinks(file)
           })
         resolve(links)
-    }    
+    }  else {
+      reject(new Error(colors.red("There are no files md"))); 
+    }  
   }).catch((err) => {
-    console.log(err)
+    (err)
   })  
   }
 
 
-// mdLinks('prueba', { validate: false })
+// mdLinks('prueba', { validate: true })
 // .then((resolve) => {
 //     console.log(resolve);
   

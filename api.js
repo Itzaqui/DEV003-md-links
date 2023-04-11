@@ -1,4 +1,5 @@
 const fs = require("fs");
+const fsPromises = require("fs").promises;
 const path = require("path");
 
 const example = "C:/Users/Lenovo/Desktop/md-links/DEV003-md-links/README.md";
@@ -36,7 +37,7 @@ const isFile = (path) => fs.statSync(path).isFile();
 // console.log(isFile("C:/Users/Lenovo/Desktop/md-links/DEV003-md-links/README.md"))
 
 function directory(dirPath) {
-  const stats = fs.statSync(dirPath);//devuelve informacion sincronicamente sobre la ruta
+  const stats = fs.statSync(dirPath);
   if  (stats.isDirectory()) {
     return true
   }
@@ -48,7 +49,7 @@ function directory(dirPath) {
 
 
 function mdFile(filePath) {
-  const extName = path.extname(filePath);//devuelve la extensión de la ruta de archivo despues del .
+  const extName = path.extname(filePath);
   if (extName === ".md") { 
       return true;
   } else {
@@ -60,7 +61,9 @@ function mdFile(filePath) {
 const readFile = (path) => {
   return (fs.readFileSync(path, 'utf8'));
 }
-//  console.log(readFile(example4))
+//  console.log(readFile("C:/Users/Lenovo/Desktop/md-links/DEV003-md-links/archivo4.md"))
+
+
 
 function getLinks(path) {
  const data = readFile(path)
@@ -77,7 +80,7 @@ function getLinks(path) {
  return newArray
 };
 
-// console.log(getLinks("C:/Users/Lenovo/Desktop/md-links/DEV003-md-links/README.md"))
+// console.log(getLinks("C:/Users/Lenovo/Desktop/md-links/DEV003-md-links/archivo4.md"))
 
 
 function validateLinks(arr) {
@@ -116,6 +119,7 @@ function validateLinks(arr) {
 //  .then((res) => console.log(res))
 // .catch((error) => console.log(error))
 
+
 function readDirectory(dirPath, arrayOfFiles) {
   const files = fs.readdirSync(dirPath)
   files.forEach(file => {
@@ -130,72 +134,9 @@ function readDirectory(dirPath, arrayOfFiles) {
 };
 
 // const filesDirectory = []
-// console.log(readDirectory("C:/Users/Lenovo/Desktop/md-links/DEV003-md-links", filesDirectory))
+// console.log(readDirectory("C:/Users/Lenovo/Desktop/md-links/DEV003-md-links/prueba", filesDirectory))
 
 const links = [
-  {
-    href: 'https://user-images.githubusercontent.com/110297/42118443-b7a5f1f0-7bc8-11e8-96ad-9cc5593715a6.jpg',
-    text: 'md-links',
-    file: 'C:\\Users\\Lenovo\\Desktop\\md-links\\DEV003-md-links\\README.md',
-    status: 200,
-    statusText: 'OK'
-  },
-  {
-    href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce',        
-    text: 'Array.prototype.reduce() - MDN',
-    file: 'C:\\Users\\Lenovo\\Desktop\\md-links\\DEV003-md-links\\README.md',
-    status: 200,
-    statusText: 'OK'
-  },
-  {
-    href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/filter',
-    text: 'Array.prototype.filter() - MDN',
-    file: 'C:\\Users\\Lenovo\\Desktop\\md-links\\DEV003-md-links\\README.md',
-    status: 200,
-    statusText: 'OK'
-  },
-  {
-    href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach',        
-    text: 'Array.prototype.forEach() - MDN',
-    file: 'C:\\Users\\Lenovo\\Desktop\\md-links\\DEV003-md-links\\README.md',
-    status: 200,
-    statusText: 'OK'
-  },
-  {
-    href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/map',
-    text: 'Array.prototype.map() - MDN',
-    file: 'C:\\Users\\Lenovo\\Desktop\\md-links\\DEV003-md-links\\README.md',
-    status: 200,
-    statusText: 'OK'
-  },
-  {
-    href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/sort',
-    text: 'Array.prototype.sort() - MDN',
-    file: 'C:\\Users\\Lenovo\\Desktop\\md-links\\DEV003-md-links\\README.md',
-    status: 200,
-    statusText: 'OK'
-  },
-  {
-    href: 'https://developer.mozilla.org/es/docs/Glossary/Callback_function',
-    text: 'Función Callback - MDN',
-    file: 'C:\\Users\\Lenovo\\Desktop\\md-links\\DEV003-md-links\\README.md',
-    status: 200,
-    statusText: 'OK'
-  },
-  {
-    href: 'https://developer.mozilla.org/es/docs/Learn/JavaScript/Building_blocks/conditionals',
-    text: 'Tomando decisiones en tu código — condicionales - MDN',
-    file: 'C:\\Users\\Lenovo\\Desktop\\md-links\\DEV003-md-links\\README.md',
-    status: 200,
-    statusText: 'OK'
-  },
-  {
-    href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Promise',
-    text: 'Promise - MDN',
-    file: 'C:\\Users\\Lenovo\\Desktop\\md-links\\DEV003-md-links\\README.md',
-    status: 200,
-    statusText: 'OK'
-  },
   {
     href: 'https://developer.mozilla.org/es/docs/Web/HTTP/Status',
     text: 'Códigos de estado de respuesta HTTP - MDN',
@@ -264,6 +205,7 @@ module.exports = {
   totalLinks,
   uniqueLinks,
   brokenLinks,
+  links,
 };
 
   
